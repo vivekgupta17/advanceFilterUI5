@@ -1,0 +1,159 @@
+<mvc:View controllerName="com.sap.assessmentui5.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page id="page">
+
+        <content>
+
+            <Bar>
+
+                <contentLeft>
+
+                    <Title text="Products" />
+
+                </contentLeft>
+
+                <contentRight>
+
+                    <Button text ="Advance Filter" icon="sap-icon://filter" press="handleToggleSecondaryContent" class="filter"/>
+
+                </contentRight>
+
+            </Bar>
+
+            <u:SplitContainer id="mySplitContainer" showSecondaryContent="false" secondaryContentWidth="300px">
+                <u:secondaryContent >
+
+                    <f:SimpleForm id="SimpleFormToolbar" editable="true">
+                        <f:toolbar>
+                            <Toolbar id="TB1">
+                                <Title id="Title1" text="Filter Products"/>
+                                <ToolbarSpacer />
+                            </Toolbar>
+                        </f:toolbar>
+                        <f:content>
+
+                            <core:Title text="Select Filters" />
+
+                            <l:VerticalLayout>
+
+                                <Label text="ID" />
+                                <Input id="idId" width="200px" />
+
+                                <Label text="Name" />
+                                <Input id="idName" width="200px" />
+
+                                <Label text="Description" />
+                                <Input id="idDesc" width="200px"/>
+
+                            </l:VerticalLayout>
+
+                            <core:Title />
+                            <l:VerticalLayout>
+
+                                <Label text="Release Date" />
+                                <Input id="idRel" width="200px" />
+
+                                <Label text="Price" />
+                                <Input id="idPrice" width="200px"/>
+
+                                <Button id="idReset" text="Reset" type="Default" press="onReset" width="100px" />
+
+                                <Button id="idSubmit" text="Submit" type="Accept" press="onSearchClick" width="100px"/>
+
+
+                            </l:VerticalLayout>
+
+
+
+                        </f:content>
+
+
+                    </f:SimpleForm>
+
+                </u:secondaryContent>
+
+                <u:content>
+
+
+                    <Table id="idOdataTable" items="{/Products}" selectionChange="handleSelectionChange">
+                        <headerToolbar>
+                            <Toolbar>
+                                <content>
+                                    <Title text="Products List" />
+                                    <ToolbarSpacer />
+
+
+
+                                    <Select id="idPageSelect" selectedKey="1" change="onLoadAssets">
+                                        <items>
+                                            <core:Item key="1" text="Page 1" />
+                                            <core:Item key="2" text="Page 2" />
+                                            <core:Item key="3" text="Page 3" />
+                                        </items>
+                                    </Select>
+                                </content>
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <header>
+                                    <Label text="ID" />
+                                </header>
+                            </Column>
+                            <Column>
+                                <header>
+                                    <Label text="Name" />
+                                </header>
+                            </Column>
+                            <Column>
+                                <header>
+                                    <Label text="Description" />
+                                </header>
+                            </Column>
+                            <Column>
+                                <header>
+                                    <Label text="Release Date" />
+                                </header>
+                            </Column>
+
+                            <Column>
+                                <header>
+                                    <Label text="Price" />
+                                </header>
+                            </Column>
+
+                            <Column>
+                                <header>
+                                    <Label text="Rating" />
+                                </header>
+                            </Column>
+
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Active" press="handleRowClick">
+                                <cells>
+                                    <Text text="{ID}" />
+                                    <Text text="{Name}" />
+                                    <Text text="{Description}" />
+                                    <Text text="{ReleaseDate}" />
+                                    <Text text="{Price}" />
+                                    <RatingIndicator value ="{Rating}" />
+
+
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                </u:content>
+            </u:SplitContainer>
+
+        </content>
+    </Page>
+</mvc:View>
