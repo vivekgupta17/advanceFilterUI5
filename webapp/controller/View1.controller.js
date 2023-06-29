@@ -15,6 +15,7 @@ sap.ui.define([
                 var detailModel = this.getOwnerComponent().getModel("detailModel");
                 this.detailModel= detailModel;
                 debugger
+                var temp = 7;
             },
             handleToggleSecondaryContent: function (oEvent) {
                 this.byId("mySplitContainer").setOrientation("Vertical");
